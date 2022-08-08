@@ -4,7 +4,7 @@
     <div class="container d-flex justify-content-center align-items-center" style="margin-top: 100px;">
         <div class="container" style="width:600px; background-color:white; padding:30px; border-radius: 20px; box-shadow: var(--shadow);">
             <h3 class="text-center">Login</h3>
-            <p class="text-center">Welcome Back to BeeVerse!</p>
+            <p class="text-center">Welcome Back to Beeverse!</p>
             <form action="/login/auth" method="post" style="margin-top: 30px">
                 @csrf
                 <div class="form-group">
