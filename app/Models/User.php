@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,5 +66,32 @@ class User extends Authenticatable
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+
+    public static function getUserSearch($searchData)
+    {
+        if(Auth::check()){
+            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('users.id', '!=', auth()->user()->id)
+            ->where('title', 'like', '%' . $searchData . '%')
+            ->orwhere('job_position', 'like', '%' . $searchData . '%')->groupby('users.id');
+        }
+        else{
+            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('title', 'like', '%' . $searchData . '%')
+            ->orwhere('job_position', 'like', '%' . $searchData . '%')->groupby('users.id');
+        }
+
+        return $data->paginate(3);
+    }
+
+    public static function getUserFilter($searchData)
+    {
+        if(Auth::check()){
+            $data = User::where('gender', '=', $searchData)->where('visibility', true)->where('id', '!=', auth()->user()->id);
+        }
+        else{
+            $data = User::where('gender', '=', $searchData)->where('visibility', true);
+        }
+
+        return $data->paginate(3);
     }
 }

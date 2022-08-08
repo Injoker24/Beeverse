@@ -20,6 +20,7 @@
                         <div class="desc-container">
                             <h3> {{ $user->username }} </h3>
                             <h5 style="font-weight: 300; font-size: 18px;"> {{ $user->job_position }} </h5>
+                            <h5 style="font-weight: 300; font-size: 18px;"> {{ $user->gender }} </h5>
                         </div>
                     </div>
                     <a class="button-first">
@@ -51,16 +52,16 @@
         <div class="filter-container">
             <h3>Filter by Gender</h3>
             <div style="margin-top: 10px;">
-                <form class="d-flex flex-row" style="align-items: center;" action="/search" method="get">
+                <form class="d-flex flex-row" style="align-items: center;" action="/filter" method="get">
                     <div class="form-check" style="margin-right: 10px;">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="gender" id="Male" value="Male" required>
+                        <label class="form-check-label" for="Male">
                             Male
                         </label>
                     </div>
                     <div class="form-check" style="margin-right: 10px;">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="gender" id="Female" value="Female">
+                        <label class="form-check-label" for="Female">
                             Female
                         </label>
                     </div>

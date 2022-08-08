@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controller::class, 'homePage']);
 Route::get('/search', [Controller::class, 'searchPage']);
+Route::get('/filter', [Controller::class, 'filterPage']);
 
-Route::get('/login', [Controller::class, 'loginPage']);
+Route::get('/login', [Controller::class, 'loginPage'])->name('login');
 Route::post('/login/auth', [UserController::class, 'login']);
 Route::get('/register', [Controller::class, 'registerPage']);
 Route::post('/register/auth', [Controller::class, 'registerValidation']);

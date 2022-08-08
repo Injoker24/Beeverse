@@ -7,6 +7,7 @@ use App\Models\Avatar;
 use App\Models\Job;
 use App\Models\Friend;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -37,5 +38,37 @@ class Controller extends BaseController
 
     public function loginPage(){
         return view('login');
+    }
+
+    public function searchPage(Request $request){
+        if(Auth::check()){
+            return view('search', [
+                'searchData' => User::getUserSearch($request->search),
+                'search_req' => $request->search,
+                'friends' => Friend::where('friend_1', '=', auth()->user()->id)->orWhere('friend_2', '=', auth()->user()->id)->get()
+            ]);
+        }
+        else{
+            return view('search', [
+                'searchData' => User::getUserSearch($request->search),
+                'search_req' => $request->search,
+            ]);
+        }
+    }
+
+    public function filterPage(Request $request){
+        if(Auth::check()){
+            return view('search', [
+                'searchData' => User::getUserFilter($request->gender),
+                'search_req' => $request->gender,
+                'friends' => Friend::where('friend_1', '=', auth()->user()->id)->orWhere('friend_2', '=', auth()->user()->id)->get()
+            ]);
+        }
+        else{
+            return view('search', [
+                'searchData' => User::getUserFilter($request->gender),
+                'search_req' => $request->gender,
+            ]);
+        }
     }
 }
