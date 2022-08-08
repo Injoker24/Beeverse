@@ -17,21 +17,18 @@ class JobSeeder extends Seeder
         Job::create([
             'title' => 'Logo Designer',
             'path' => 'img/job/Logo Design.jpg',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'user_id' => 1,
         ]);
 
         Job::create([
             'title' => 'UI Designer',
             'path' => 'img/job/UI Design.jpg',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'user_id' => 1,
         ]);
 
         Job::create([
             'title' => 'CSS Developer',
             'path' => 'img/job/CSS Developer.jpeg',
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'user_id' => 1,
         ]);
     }

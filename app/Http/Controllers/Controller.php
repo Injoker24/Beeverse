@@ -20,4 +20,12 @@ class Controller extends BaseController
             'users' => User::where('visibility', true)->paginate(10)
         ]);
     }
+
+    public function registerPage(){
+        return view('register');
+    }
+
+    public function loginPage(){
+        return view('login');
+    }
 }

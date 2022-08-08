@@ -17,7 +17,6 @@ class CreateJobsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('path');
-            $table->string('description')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

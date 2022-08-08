@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->integer('register_price');
             $table->boolean('visibility')->default(true);
             $table->unsignedBigInteger('avatar_id');
+            $table->longText('description')->nullable();
+            $table->string('job_position');
 
             $table->foreign('avatar_id')->references('id')->on('avatars');
 
