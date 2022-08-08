@@ -29,7 +29,7 @@
                         Wishlist
                     </a>
                 </div>
-                <p style="font-size: 14px; padding-right: 100px; padding-top: 20px;"> {{ $user->description }} </p>
+                <p style="font-size: 14px; padding-right: 50px; padding-top: 20px;"> {{ $user->description }} </p>
                 <div>
                     <h5> Work Interests </h5>
                     <div class="all-job-container">
@@ -47,8 +47,47 @@
             {{ $users->links() }}
         </div>
     </div>
-    <div class="filter-container">
-
+    <div class="right-container">
+        <div class="filter-container">
+            <h3>Filter by Gender</h3>
+            <div style="margin-top: 10px;">
+                <form class="d-flex flex-row" style="align-items: center;" action="/search" method="get">
+                    <div class="form-check" style="margin-right: 10px;">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check" style="margin-right: 10px;">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Female
+                        </label>
+                    </div>
+                    <button style="width: 100px; margin-left: 10px;" type="submit" class="button-first">Apply</button>
+                </form>
+            </div>
+        </div>
+        <div class="filter-container">
+            <h3 style="margin-bottom: 20px;">Friend's List</h3>
+            @if(Auth::check())
+                @forelse ( $friends as $friend )
+                <div class="d-flex flex-row align-items-center" style="margin-bottom: 20px;">
+                    @if ( $friend->friends_1->username == Auth::user()->username )
+                        <img class="friend-image" src="{{ $friend->friends_2->avatar->path}}" alt="">
+                        <h5> {{ $friend->friends_2->username }} </h5>
+                    @else
+                        <img class="friend-image" src="{{ $friend->friends_1->avatar->path }}" alt="">
+                        <h5> {{ $friend->friends_1->username }} </h5>
+                    @endif
+                </div>
+                @empty
+                    <p> No Friends Yet </p>
+                @endforelse
+            @else
+                <p> Please Login to see your friends </p>
+            @endif
+        </div>
     </div>
 </div>
 @endsection

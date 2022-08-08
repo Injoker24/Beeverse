@@ -42,11 +42,10 @@ a {
 .home-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .feeds {
-    margin-left: 100px;
     margin-top: 30px;
 }
 
@@ -58,7 +57,7 @@ a {
     border: solid 5px var(--white);
     box-shadow: var(--shadow);
     padding: 30px;
-    width: 50vw;
+    width: 70vw;
     background-color: var(--white);
     margin-bottom: 30px;
 }
@@ -85,7 +84,7 @@ a {
 .all-job-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     margin-top: 20px;
 }
 
@@ -93,10 +92,33 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 30px;
 }
 
 .job-image {
     width: 250px;
     height: 250px;
     border-radius: 20px;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    border: solid 5px var(--white);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    width: 20vw;
+    background-color: var(--white);
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.friend-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    border: solid 1px var(--light);
+    margin-right: 20px;
 }

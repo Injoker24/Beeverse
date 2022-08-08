@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,14 @@ Route::get('/', [Controller::class, 'homePage']);
 Route::get('/search', [Controller::class, 'searchPage']);
 
 Route::get('/login', [Controller::class, 'loginPage']);
-Route::post('/login/auth', [Controller::class, 'login']);
+Route::post('/login/auth', [UserController::class, 'login']);
 Route::get('/register', [Controller::class, 'registerPage']);
 Route::post('/register/auth', [Controller::class, 'registerValidation']);
 Route::get('/register/payment', [Controller::class, 'paymentPage']);
 Route::post('/register/payment/auth', [Controller::class, 'paymentValidation']);
 
 Route::middleware(['user'])->group(function () {
-    Route::get('/logout', [Controller::class, 'logout']);
+    Route::get('/logout', [UserController::class, 'logout']);
 
     Route::get('/profile/{id}', [Controller::class, 'profilePage']);
     Route::post('/profile/add/{id}', [Controller::class, 'addToWishlist']);
