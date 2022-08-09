@@ -142,3 +142,58 @@ a {
     border: solid 1px var(--light);
     margin-right: 20px;
 }
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: solid 5px var(--white);
+    box-shadow: var(--shadow);
+    padding: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: var(--white);
+    margin: 50px;
+    position: relative;
+    margin-top: 130px;
+    padding-top: 130px;
+}
+
+.profile-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    top: -80px;
+}
+
+.profile-avatar-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: solid 2px var(--light);
+}
+
+.profile-desc-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.visibility-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    border: solid 5px var(--white);
+    box-shadow: var(--shadow);
+    padding: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: var(--white);
+    margin: 50px;
+    margin-top: 0;
+}

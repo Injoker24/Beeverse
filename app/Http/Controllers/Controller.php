@@ -75,4 +75,8 @@ class Controller extends BaseController
     public function paymentPage(){
         return view('payment');
     }
+
+    public function settingPage(){
+        return view('settings');
+    }
 }

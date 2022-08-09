@@ -152,5 +152,39 @@ class UserController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function setVisibility(){
+        if(Auth::user()->visibility == true){
+            if(Auth::user()->coin >= 50){
+                $userDetails = Auth::user();
+                $user = User::find($userDetails->id);
+                $user->visibility = false;
+                $user->coin = $user->coin - 50;
+                $user->avatar_id = rand(2,4);
+                $user->save();
+
+                Alert::success('Success', 'Successfully Went Incognito');
+            }
+            else{
+                return redirect()->back()->withErrors(['msg' => 'You do not have enough coins']);
+            }
+        }
+        else if(Auth::user()->visibility == false){
+            if(Auth::user()->coin >= 5){
+                $userDetails = Auth::user();
+                $user = User::find($userDetails->id);
+                $user->visibility = true;
+                $user->coin = $user->coin - 5;
+                $user->avatar_id = 1;
+                $user->save();
+
+                Alert::success('Success', 'Successfully Went Visible, Please Apply a New Avatar from Your Inventory');
+            }
+            else{
+                return redirect()->back()->withErrors(['msg' => 'You do not have enough coins']);
+            }
+        }
+        return redirect()->back();
+    }
 }
 

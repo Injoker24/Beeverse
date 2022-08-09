@@ -50,6 +50,6 @@ Route::middleware(['paid'])->group(function () {
     Route::post('/topup', [Controller::class, 'topup']);
 
     Route::get('/setting', [Controller::class, 'settingPage']);
-    Route::post('/setting/setVisibility', [Controller::class, 'setVisibility']);
+    Route::post('/setting/setVisibility', [UserController::class, 'setVisibility']);
 });
 
