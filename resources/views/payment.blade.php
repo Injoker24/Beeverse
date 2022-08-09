@@ -7,18 +7,18 @@
             <p class="text-center mb-0">Please Pay According to the Fee to Use Beeverse!</p>
             <p class="text-center">Excess Payment Will be Converted to Coins!</p>
 
-            <h3>Fee : Rp. {{ Auth::user()->register_price }}</h3>
+            <h3>Fee : Rp. <span id="price">{{ Auth::user()->register_price }}</span></h3>
             <form action="/payment/auth" method="post" style="margin-top: 30px">
                 @csrf
                 <div class="form-group">
                     <input type="number" class="form-control" id="paying" name="paying" placeholder="Enter payment...">
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="button-first" style="width: 100%">Pay Fee</button>
-                </div>
                 @if ($errors->any())
                     <div class="text-danger mb-2">{{ $errors->first() }}</div>
                 @endif
+                <div class="form-group">
+                    <button type="button" class="button-first payfee" style="width: 100%">Pay Fee</button>
+                </div>
             </form>
         </div>
     </div>

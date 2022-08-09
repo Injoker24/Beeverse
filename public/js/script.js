@@ -30,3 +30,22 @@ $(document).ready(function() {
         x--;
     })
 });
+
+$(document).ready(function() {
+    $(".payfee").on("click", function(e) {
+        var input = $("#paying").val();
+        var actual = $("#price").text();
+        var form = $(this).parents("form");
+
+        if (Number(input) > Number(actual)) {
+            e.preventDefault();
+            let text = "Sorry you overpaid Rp" + (Number(input) - Number(actual)).toString() + " , would you like to enter a balance?"
+            if (confirm(text) == true ) {
+                form.submit();
+            }
+        }
+        else {
+            form.submit();
+        }
+    });
+});

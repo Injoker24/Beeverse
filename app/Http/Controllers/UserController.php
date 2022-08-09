@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redis;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -26,15 +27,18 @@ class UserController extends Controller
             else{
                 Cookie::queue(Cookie::forget('LoginCookie'));
             }
+            Alert::success('Success', 'Successfully Logged In');
             return redirect('/');
         }
         else{
             return redirect()->back()->withErrors(['msg' => 'Invalid Username or Password']);
         }
+
     }
 
     public function logout(){
         Auth::logout();
+        Alert::success('Success', 'Successfully Logged Out');
         return redirect('/');
     }
 
@@ -130,13 +134,14 @@ class UserController extends Controller
         }
 
         Auth::login($user);
-
+        Alert::success('Success', 'Successfully Registered');
         return redirect()->route('payment');
     }
 
     public function payment(Request $request){
         if($request->paying < Auth::user()->register_price){
-            return redirect()->back()->withErrors(['msg' => 'Payment Below Fee']);
+            $min = Auth::user()->register_price - $request->paying;
+            return redirect()->back()->withErrors(['msg' => 'You are still underpaid Rp. '. $min]);
         }
 
         $userDetails = Auth::user();
