@@ -21,13 +21,13 @@ class Controller extends BaseController
     public function homePage(){
         if(Auth::check()){
             return view('home', [
-                'users' => User::where('visibility', true)->where('id', '!=', auth()->user()->id)->paginate(3),
+                'users' => User::where('visibility', true)->where('paid', true)->where('id', '!=', auth()->user()->id)->paginate(3),
                 'friends' => Friend::where('friend_1', '=', auth()->user()->id)->orWhere('friend_2', '=', auth()->user()->id)->get()
             ]);
         }
         else{
             return view('home', [
-                'users' => User::where('visibility', true)->paginate(3)
+                'users' => User::where('visibility', true)->where('paid', true)->paginate(3)
             ]);
         }
     }
