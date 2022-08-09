@@ -71,12 +71,12 @@ class User extends Authenticatable
     public static function getUserSearch($searchData)
     {
         if(Auth::check()){
-            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('users.id', '!=', auth()->user()->id)
+            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('paid', true)->where('users.id', '!=', auth()->user()->id)
             ->where('title', 'like', '%' . $searchData . '%')
             ->orwhere('job_position', 'like', '%' . $searchData . '%')->groupby('users.id');
         }
         else{
-            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('title', 'like', '%' . $searchData . '%')
+            $data = User::select('users.*')->join('jobs', 'user_id', '=', 'users.id')->where('visibility', true)->where('paid', true)->where('title', 'like', '%' . $searchData . '%')
             ->orwhere('job_position', 'like', '%' . $searchData . '%')->groupby('users.id');
         }
 
@@ -86,10 +86,10 @@ class User extends Authenticatable
     public static function getUserFilter($searchData)
     {
         if(Auth::check()){
-            $data = User::where('gender', '=', $searchData)->where('visibility', true)->where('id', '!=', auth()->user()->id);
+            $data = User::where('gender', '=', $searchData)->where('visibility', true)->where('paid', true)->where('id', '!=', auth()->user()->id);
         }
         else{
-            $data = User::where('gender', '=', $searchData)->where('visibility', true);
+            $data = User::where('gender', '=', $searchData)->where('visibility', true)->where('paid', true);
         }
 
         return $data->paginate(3);

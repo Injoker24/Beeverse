@@ -13,6 +13,10 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter password...">
                 </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="remember" id="remember" {{Cookie::get('LoginCookie') ? "checked" : ""}}>
+                    <span style="color: var(--text)">Remember Me</span>
+                </div>
                 <div class="form-group">
                     <button type="submit" class="button-first" style="width: 100%">Login</button>
                 </div>

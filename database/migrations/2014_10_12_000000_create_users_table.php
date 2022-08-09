@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('gender', ['Male', 'Female']);
             $table->integer('age');
-            $table->integer('coin');
+            $table->integer('coin')->default(100);
             $table->string('linkedin_link')->nullable();
             $table->string('phone_num');
             $table->integer('register_price');
@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('avatar_id');
             $table->longText('description')->nullable();
             $table->string('job_position');
+            $table->boolean('paid')->default(false);
 
             $table->foreign('avatar_id')->references('id')->on('avatars');
 

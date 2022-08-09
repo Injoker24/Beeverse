@@ -15,20 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Controller::class, 'homePage']);
+Route::get('/', [Controller::class, 'homePage'])->name('home');
 Route::get('/search', [Controller::class, 'searchPage']);
 Route::get('/filter', [Controller::class, 'filterPage']);
 
 Route::get('/login', [Controller::class, 'loginPage'])->name('login');
 Route::post('/login/auth', [UserController::class, 'login']);
 Route::get('/register', [Controller::class, 'registerPage']);
-Route::post('/register/auth', [Controller::class, 'registerValidation']);
-Route::get('/register/payment', [Controller::class, 'paymentPage']);
-Route::post('/register/payment/auth', [Controller::class, 'paymentValidation']);
+Route::post('/register/auth', [UserController::class, 'register']);
 
 Route::middleware(['user'])->group(function () {
-    Route::get('/logout', [UserController::class, 'logout']);
+    Route::get('/payment', [Controller::class, 'paymentPage'])->name('payment');
+    Route::post('/payment/auth', [UserController::class, 'payment']);
 
+    Route::get('/logout', [UserController::class, 'logout']);
+});
+
+Route::middleware(['paid'])->group(function () {
     Route::get('/profile/{id}', [Controller::class, 'profilePage']);
     Route::post('/profile/add/{id}', [Controller::class, 'addToWishlist']);
     Route::get('/wishlist', [Controller::class, 'wishlistPage']);

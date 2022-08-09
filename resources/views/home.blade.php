@@ -7,7 +7,7 @@
             <h3>Find People With Your Interests!</h3>
             <div style="margin-top: 10px;">
                 <form class="d-flex flex-row" action="/search" method="get">
-                    <input type=text name="search" placeholder="Enter work interests..." class="form-control" required>
+                    <input type=text name="search" placeholder="Enter work interests or job position..." class="form-control" required>
                     <button style="width: 150px; margin-left: 10px;" type="submit" class="button-first">Search</button>
                 </form>
             </div>
