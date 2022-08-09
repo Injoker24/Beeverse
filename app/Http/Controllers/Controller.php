@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Avatar;
 use App\Models\Job;
 use App\Models\Friend;
+use App\Models\OwnedAvatar;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,5 +79,12 @@ class Controller extends BaseController
 
     public function settingPage(){
         return view('settings');
+    }
+
+    public function profilePage(Request $request){
+        return view('profile', [
+            'user' => User::where('id', '=', $request->id)->get()->first(),
+            'avatars' => OwnedAvatar::where('user_id', '=', $request->id)->get(),
+        ]);
     }
 }

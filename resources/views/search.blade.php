@@ -4,7 +4,15 @@
 <div class="home-container">
     <div class="feeds">
         <div class="user-container">
-            <h3>Showing Results for {{ $search_req }}</h3>
+            <div class="d-flex flex-row align-items-center">
+                <button onclick="location.href='/'" class="button-second mr-3" style="padding: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                    Back
+                </button>
+                <h3>Showing Results for {{ $search_req }}</h3>
+            </div>
             <div style="margin-top: 10px;">
                 <form class="d-flex flex-row" action="/search" method="get">
                     <input type=text name="search" placeholder="Enter work interests or job position..." class="form-control" required>
@@ -23,7 +31,7 @@
                             <h5 style="font-weight: 300; font-size: 18px;"> {{ $user->gender }} </h5>
                         </div>
                     </div>
-                    <a class="button-first">
+                    <a class="button-first" href="/profile/{{ $user->id }}">
                         View Profile
                     </a>
                 </div>

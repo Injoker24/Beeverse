@@ -14,7 +14,7 @@ class OwnedAvatar extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function avatars()
+    public function avatar()
     {
         return $this->belongsTo(Avatar::class);
     }

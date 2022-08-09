@@ -15,7 +15,7 @@
         <p style="align-self: flex-start"><span style="font-weight: bold">Age: </span> {{ Auth::user()->age }}</p>
         <p style="align-self: flex-start"><span style="font-weight: bold">Phone Number: </span> {{ Auth::user()->phone_num }}</p>
         <p style="align-self: flex-start"><span style="font-weight: bold">Linked In: </span> <a href="{{ Auth::user()->linkedin_link }}">{{ Auth::user()->linkedin_link }}</a></p>
-        <p style="align-self: flex-start; font-size: 14px; width:60vw;"> {{ Auth::user()->description }} </p>
+        <p style="align-self: flex-start; font-size: 14px; width:80vw;"> {{ Auth::user()->description }} </p>
         <div style="align-self: flex-start;">
             <h5> Work Interests </h5>
             <div class="all-job-container">

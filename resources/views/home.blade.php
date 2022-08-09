@@ -23,7 +23,7 @@
                             <h5 style="font-weight: 300; font-size: 18px;"> {{ $user->gender }} </h5>
                         </div>
                     </div>
-                    <a class="button-first">
+                    <a class="button-first" href="/profile/{{ $user->id }}">
                         View Profile
                     </a>
                 </div>
