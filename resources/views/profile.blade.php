@@ -45,7 +45,7 @@
                     <h2 class="mt-4">{{ $avatar->avatar->name }}</h2>
                 </div>
             @empty
-                <p>No avatars in inventory</p>
+                <h4>No avatars in inventory</h4>
             @endforelse
         </div>
     </div>

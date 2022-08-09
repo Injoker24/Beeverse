@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::middleware(['user'])->group(function () {
 
 Route::middleware(['paid'])->group(function () {
     Route::get('/profile/{id}', [Controller::class, 'profilePage']);
-    Route::post('/profile/add/{id}', [Controller::class, 'addToWishlist']);
+    Route::post('/profile/add/{id}', [WishlistController::class, 'addToWishlist']);
     Route::get('/wishlist', [Controller::class, 'wishlistPage']);
     Route::get('/friend', [Controller::class, 'friendPage']);
 
