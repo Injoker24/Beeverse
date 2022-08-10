@@ -186,5 +186,15 @@ class UserController extends Controller
         }
         return redirect()->back();
     }
+
+    public function topup(){
+        $userDetails = Auth::user();
+        $user = User::find($userDetails->id);
+        $user->coin = $user->coin + 100;
+        $user->save();
+
+        Alert::success('Success', '100 Coins has been added to your account');
+        return redirect()->back();
+    }
 }
 

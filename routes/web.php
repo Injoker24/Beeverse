@@ -46,12 +46,12 @@ Route::middleware(['paid'])->group(function () {
     Route::get('/inventory', [Controller::class, 'inventoryPage']); //Done
     Route::post('/inventory/apply/{id}', [OwnedAvatarController::class, 'applyAvatar']); //Done
 
-    Route::get('/shop', [Controller::class, 'shopPage']);
+    Route::get('/shop', [Controller::class, 'shopPage']); //Done
     Route::post('/shop/gift/{id}', [Controller::class, 'sendGift']);
     Route::post('/shop/{id}', [Controller::class, 'buyAvatar']);
 
-    Route::get('/topup', [Controller::class, 'topupPage']);
-    Route::post('/topup', [Controller::class, 'topup']);
+    Route::get('/topup', [Controller::class, 'topupPage']); //Done
+    Route::post('/topup', [UserController::class, 'topup']); //Done
 
     Route::get('/setting', [Controller::class, 'settingPage']); //Done
     Route::post('/setting/setVisibility', [UserController::class, 'setVisibility']); //Done

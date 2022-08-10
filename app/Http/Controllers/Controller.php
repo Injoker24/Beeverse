@@ -107,4 +107,14 @@ class Controller extends BaseController
             'avatars' => OwnedAvatar::where('user_id', '=', auth()->user()->id)->get(),
         ]);
     }
+
+    public function shopPage(){
+        return view('shop', [
+            'avatars' => Avatar::where('id', '>=' , 5)->paginate(9),
+        ]);
+    }
+
+    public function topupPage(){
+        return view('topup');
+    }
 }
