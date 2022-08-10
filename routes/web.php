@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\OwnedAvatarController;
+use App\Http\Controllers\AvatarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,8 +48,8 @@ Route::middleware(['paid'])->group(function () {
     Route::post('/inventory/apply/{id}', [OwnedAvatarController::class, 'applyAvatar']); //Done
 
     Route::get('/shop', [Controller::class, 'shopPage']); //Done
-    Route::post('/shop/gift/{id}', [Controller::class, 'sendGift']);
-    Route::post('/shop/{id}', [Controller::class, 'buyAvatar']);
+    Route::post('/shop/gift/{id}', [AvatarController::class, 'sendGift']);
+    Route::post('/shop/{id}', [AvatarController::class, 'buyAvatar']); //Done
 
     Route::get('/topup', [Controller::class, 'topupPage']); //Done
     Route::post('/topup', [UserController::class, 'topup']); //Done

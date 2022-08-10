@@ -111,6 +111,7 @@ class Controller extends BaseController
     public function shopPage(){
         return view('shop', [
             'avatars' => Avatar::where('id', '>=' , 5)->paginate(9),
+            'friends' => Friend::where('friend_1', '=', auth()->user()->id)->orWhere('friend_2', '=', auth()->user()->id)->get(),
         ]);
     }
 

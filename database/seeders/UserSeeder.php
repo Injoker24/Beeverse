@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
             'avatar_id' => 9,
             'job_position' => 'Game Developer',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet hendrerit lacus, ac ultricies magna. Proin gravida nibh sed tristique aliquet. Vivamus sit amet metus ac diam vehicula dignissim.',
-            'paid' => false,
+            'paid' => true,
         ]);
     }
 }

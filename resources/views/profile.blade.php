@@ -29,7 +29,7 @@
             <div class="all-job-container">
                 @foreach($user->jobs as $job)
                     <div class="job-container">
-                        <img class="job-image" src="/{{ $job->path }}" alt="">
+                        <img class="job-image" src="{{ $job->path }}" alt="">
                         <p style="margin-top: 10px;"> {{ $job->title }} </p>
                     </div>
                 @endforeach

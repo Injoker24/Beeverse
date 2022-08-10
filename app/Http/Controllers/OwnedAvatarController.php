@@ -11,6 +11,12 @@ class OwnedAvatarController extends Controller
 {
     public function applyAvatar(Request $request){
 
+        if(Auth::user()->visibility == false)
+        {
+            Alert::error('Error', 'You are in incognito mode!');
+            return redirect()->back();
+        }
+
         $userDetails = Auth::user();
         $user = User::find($userDetails->id);
         $user->avatar_id = $request->id;
