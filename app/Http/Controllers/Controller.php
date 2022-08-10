@@ -7,6 +7,7 @@ use App\Models\Avatar;
 use App\Models\Job;
 use App\Models\Friend;
 use App\Models\OwnedAvatar;
+use App\Models\Wishlist;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,6 +86,25 @@ class Controller extends BaseController
         return view('profile', [
             'user' => User::where('id', '=', $request->id)->get()->first(),
             'avatars' => OwnedAvatar::where('user_id', '=', $request->id)->get(),
+        ]);
+    }
+
+    public function wishlistPage(){
+        return view('wishlist', [
+            'wishlists' => Wishlist::where('user_id', '=', auth()->user()->id)->get(),
+            'wishlisteds' => Wishlist::where('wishlist_id', '=', auth()->user()->id)->get(),
+        ]);
+    }
+
+    public function friendPage(){
+        return view('friends', [
+            'friends' => Friend::where('friend_1', '=', auth()->user()->id)->orWhere('friend_2', '=', auth()->user()->id)->get(),
+        ]);
+    }
+
+    public function inventoryPage(){
+        return view('inventory', [
+            'avatars' => OwnedAvatar::where('user_id', '=', auth()->user()->id)->get(),
         ]);
     }
 }

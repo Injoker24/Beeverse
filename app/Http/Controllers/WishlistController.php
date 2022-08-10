@@ -48,4 +48,10 @@ class WishlistController extends Controller
             return redirect()->back();
         }
     }
+
+    public function removeFromWishlist(Request $request){
+        Wishlist::where('user_id', '=', Auth::user()->id)->where('wishlist_id', '=', $request->id)->delete();
+        Alert::success('Success', 'User removed from wishlist');
+        return redirect()->back();
+    }
 }
