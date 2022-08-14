@@ -4,12 +4,12 @@
 <div class="home-container">
     <div class="feeds">
         <div class="user-container">
-            <h3>Avatar Shop </h3>
+            <h3>@lang('shop.shop')</h3>
         </div>
         <div class="user-container flex-row justify-content-start align-items-center">
-            <h4 class="mr-3">Your Coins: {{ Auth::user()->coin }}</h4>
+            <h4 class="mr-3">@lang('shop.coins'): {{ Auth::user()->coin }}</h4>
             <a class="button-first" style="text-decoration: none; width: fit-content;" href="/topup">
-                Topup now
+                @lang('shop.topup')
             </a>
         </div>
         <div class="user-container">
@@ -20,25 +20,25 @@
                         <h4 class="mt-3">{{ $avatar->name }}</h4>
                         @if($avatar->ownedAvatars->contains('user_id', Auth::user()->id))
                             <button type="button" class="button-success" disabled>
-                                Avatar Owned
+                                @lang('shop.own')
                             </button>
                         @else
                             <form action="/shop/{{ $avatar->id }}" method="post">
                                 @csrf
                                 <button type="submit" class="button-first">
-                                    {{ $avatar->price }} coins | Buy
+                                    {{ $avatar->price }} @lang('shop.buy')
                                 </button>
                             </form>
                             @endif
                         <button type="button" class="button-second mt-2" data-toggle="modal" data-target="#exampleModalCenter-{{$avatar->id}}">
-                            {{ $avatar->price }} coins | Send as Gift
+                            {{ $avatar->price }} @lang('shop.gift')
                         </button>
 
                         <div class="modal fade" id="exampleModalCenter-{{$avatar->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Choose Friend to Receive Gift</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">@lang('shop.choose')</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -58,13 +58,13 @@
                                                     </label>
                                                 </div>
                                             @empty
-                                                <h4>No friends to gift</h4>
+                                                <h4>@lang('shop.no_friends')</h4>
                                             @endforelse
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="button-second" data-dismiss="modal">Close</button>
+                                            <button type="button" class="button-second" data-dismiss="modal">@lang('shop.close')</button>
                                             @if ($friends->isEmpty() == false)
-                                                <button type="submit" class="button-first">Send Gift</button>
+                                                <button type="submit" class="button-first">@lang('shop.send')</button>
                                             @endif
                                         </div>
                                     </form>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 @empty
-                    <h4>No avatars in shop</h4>
+                    <h4>@lang('shop.no_avatars')/h4>
                 @endforelse
             </div>
         </div>

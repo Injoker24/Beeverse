@@ -4,7 +4,7 @@
 <div class="home-container">
     <div class="feeds">
         <div class="user-feeds-container">
-            <h3>Wishlisted Users</h3>
+            <h3>@lang('wishlist.wishlisted')</h3>
         </div>
         @forelse($wishlists as $wishlist)
             <div class="user-feeds-container">
@@ -19,12 +19,12 @@
                     </div>
                     <div class="d-flex flex-row align-items-center">
                         <a class="button-first mr-3" style="text-decoration: none" href="/profile/{{ $wishlist->wishlisted->id }}">
-                            View Profile
+                            @lang('wishlist.view')
                         </a>
                         <form action="/wishlist/remove/{{ $wishlist->wishlisted->id }}" method="post">
                             @csrf
                             <button type="submit" class="button-danger">
-                                Remove Wishlist
+                                @lang('wishlist.remove')
                             </button>
                         </form>
                     </div>
@@ -32,13 +32,13 @@
             </div>
         @empty
         <div class="user-feeds-container">
-            <h5> No Wishlisted User </h5>
+            <h5> @lang('wishlist.no_wishlisted') </h5>
         </div>
         @endforelse
     </div>
     <div class="feeds">
         <div class="user-feeds-container">
-            <h3>Wishlist Requests</h3>
+            <h3>@lang('wishlist.req')</h3>
         </div>
         @forelse($wishlisteds as $wishlisted)
             <div class="user-feeds-container">
@@ -53,12 +53,12 @@
                     </div>
                     <div class="d-flex flex-row align-items-center">
                         <a class="button-first mr-3" style="text-decoration: none" href="/profile/{{ $wishlisted->user->id }}">
-                            View Profile
+                            @lang('wishlist.view')
                         </a>
                         <form action="/profile/add/{{ $wishlisted->user->id }}" method="post">
                             @csrf
                             <button type="submit" class="button-success">
-                                Accept Wishlist Request
+                                @lang('wishlist.accept')
                             </button>
                         </form>
                     </div>
@@ -66,7 +66,7 @@
             </div>
         @empty
         <div class="user-feeds-container">
-            <h5> No Users Have Wishlisted You </h5>
+            <h5> @lang('wishlist.no_req') </h5>
         </div>
         @endforelse
     </div>

@@ -11,13 +11,13 @@
             <h5 style="font-weight: 300; font-size: 18px;"> {{ Auth::user()->job_position }} </h5>
             <h5 style="font-weight: 300; font-size: 18px;"> {{ Auth::user()->gender }} </h5>
         </div>
-        <p style="align-self: flex-start"><span style="font-weight: bold">Coins: </span>{{ Auth::user()->coin }}</p>
-        <p style="align-self: flex-start"><span style="font-weight: bold">Age: </span> {{ Auth::user()->age }}</p>
-        <p style="align-self: flex-start"><span style="font-weight: bold">Phone Number: </span> {{ Auth::user()->phone_num }}</p>
-        <p style="align-self: flex-start"><span style="font-weight: bold">Linked In: </span> <a href="{{ Auth::user()->linkedin_link }}">{{ Auth::user()->linkedin_link }}</a></p>
+        <p style="align-self: flex-start"><span style="font-weight: bold">@lang('settings.coins'): </span>{{ Auth::user()->coin }}</p>
+        <p style="align-self: flex-start"><span style="font-weight: bold">@lang('settings.age'): </span> {{ Auth::user()->age }}</p>
+        <p style="align-self: flex-start"><span style="font-weight: bold">@lang('settings.phone'): </span> {{ Auth::user()->phone_num }}</p>
+        <p style="align-self: flex-start"><span style="font-weight: bold">@lang('settings.linked'): </span> <a href="{{ Auth::user()->linkedin_link }}">{{ Auth::user()->linkedin_link }}</a></p>
         <p style="align-self: flex-start; font-size: 14px; width:80vw;"> {{ Auth::user()->description }} </p>
         <div style="align-self: flex-start;">
-            <h5> Work Interests </h5>
+            <h5> @lang('settings.work_interest') </h5>
             <div class="all-job-container">
                 @foreach(Auth::user()->jobs as $job)
                     <div class="job-container">
@@ -29,24 +29,24 @@
         </div>
     </div>
     <div class="visibility-container">
-        <h3> Current Visibility Status: @if( Auth::user()->visibility == 1) Visible @else Hidden @endif </h3>
+        <h3> @lang('settings.current'): @if( Auth::user()->visibility == 1) @lang('settings.visible') @else @lang('settings.hidden') @endif </h3>
         @if( Auth::user()->visibility == 1)
-            <p>Do you want to go incognito by paying 50 coins?</p>
+            <p>@lang('settings.go_incognito')</p>
             <form action="/setting/setVisibility" method="post">
                 @csrf
                 <div class="form-group">
-                    <button type="submit" class="button-first" style="width: 300px;">Go Incognito</button>
+                    <button type="submit" class="button-first" style="width: 300px;">@lang('settings.incog')</button>
                 </div>
                 @if ($errors->any())
                     <div class="text-danger mb-2">{{ $errors->first() }}</div>
                 @endif
             </form>
         @else
-            <p>Do you want to go visible by paying 5 coins?</p>
+            <p>@lang('settings.go_visible')</p>
             <form action="/setting/setVisibility" method="post">
                 @csrf
                 <div class="form-group">
-                    <button type="submit" class="button-first" style="width: 300px;">Go Visible</button>
+                    <button type="submit" class="button-first" style="width: 300px;">@lang('settings.vis')</button>
                 </div>
                 @if ($errors->any())
                     <div class="text-danger mb-2">{{ $errors->first() }}</div>
