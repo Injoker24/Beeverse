@@ -4,11 +4,11 @@
 <div class="home-container">
     <div class="feeds">
         <div class="user-container">
-            <h3>Find People With Your Interests!</h3>
+            <h3>@lang('home.find_interest')</h3>
             <div style="margin-top: 10px;">
                 <form class="d-flex flex-row" action="/search" method="get">
-                    <input type=text name="search" placeholder="Enter work interests or job position..." class="form-control" required>
-                    <button style="width: 150px; margin-left: 10px;" type="submit" class="button-first">Search</button>
+                    <input type=text name="search" placeholder="@lang('home.search_pc')" class="form-control" required>
+                    <button style="width: 150px; margin-left: 10px;" type="submit" class="button-first">@lang('home.search')</button>
                 </form>
             </div>
         </div>
@@ -24,12 +24,12 @@
                         </div>
                     </div>
                     <a class="button-first" style="text-decoration: none" href="/profile/{{ $user->id }}">
-                        View Profile
+                        @lang('home.view_profile')
                     </a>
                 </div>
                 <p style="font-size: 14px; padding-right: 50px; padding-top: 20px;"> {{ $user->description }} </p>
                 <div>
-                    <h5> Work Interests </h5>
+                    <h5> @lang('home.work_interest') </h5>
                     <div class="all-job-container">
                         @foreach($user->jobs as $job)
                             <div class="job-container">
@@ -47,27 +47,27 @@
     </div>
     <div class="right-container">
         <div class="filter-container">
-            <h3>Filter by Gender</h3>
+            <h3>@lang('home.filter')</h3>
             <div style="margin-top: 10px;">
                 <form class="d-flex flex-row" style="align-items: center;" action="/filter" method="get">
                     <div class="form-check" style="margin-right: 10px;">
                         <input class="form-check-input" type="radio" name="gender" id="Male" value="Male" required>
                         <label class="form-check-label" for="Male">
-                            Male
+                            @lang('home.male')
                         </label>
                     </div>
                     <div class="form-check" style="margin-right: 10px;">
                         <input class="form-check-input" type="radio" name="gender" id="Female" value="Female">
                         <label class="form-check-label" for="Female">
-                            Female
+                            @lang('home.female')
                         </label>
                     </div>
-                    <button style="width: 100px; margin-left: 10px;" type="submit" class="button-first">Apply</button>
+                    <button style="width: 100px; margin-left: 10px;" type="submit" class="button-first">@lang('home.apply')</button>
                 </form>
             </div>
         </div>
         <div class="filter-container">
-            <h3 style="margin-bottom: 20px;">Friend's List</h3>
+            <h3 style="margin-bottom: 20px;">@lang('home.friends_list')</h3>
             @if(Auth::check())
                 @forelse ( $friends as $friend )
                 <div class="d-flex flex-row align-items-center" style="margin-bottom: 20px;">
@@ -80,10 +80,10 @@
                     @endif
                 </div>
                 @empty
-                    <p> No Friends Yet </p>
+                    <p> @lang('home.no_friends') </p>
                 @endforelse
             @else
-                <p> Please Login to see your friends </p>
+                <p> @lang('home.please_login') </p>
             @endif
         </div>
     </div>

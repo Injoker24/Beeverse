@@ -49,3 +49,10 @@ $(document).ready(function() {
         }
     });
 });
+
+$(document).ready(function() {
+    $("#language").on("change", function () {
+        console.log('test');
+        window.location = $(this).val();
+    });
+});

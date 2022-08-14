@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/lang/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return back();
+});
 
 Route::get('/', [Controller::class, 'homePage'])->name('home'); //Done
 Route::get('/search', [Controller::class, 'searchPage']); //Done
